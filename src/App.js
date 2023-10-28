@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import AddPlayerForm from './AddPlayerForm';
-import './App.css';
+import PlayerList from './PlayerList';
+import { Container } from '@mui/material';
 
 function App() {
   const [APIData, setAPIData] = useState([]);
@@ -22,25 +22,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>Player List</h1>
-      {APIData.map((data) => {
-        return (
-          <div key={data.id}>
-            <h2>{data.name}</h2>
-            <p>Club: {data.club}</p>
-            <p>Nation: {data.nation}</p>
-            <p>Cost: {data.cost}</p>
-            <img src={data.img} alt={data.name} /> {/* Display the image */}
-            <iframe src={data.clip} title={data.name} allowFullScreen /> {/* Display the video */}
-            <p>Famous: {data.famous ? 'Yes' : 'No'}</p>
-            <p>Info: {data.info}</p>
-            <hr />
-          </div>
-        );
-      })}
-      <AddPlayerForm />
-    </div>
+    <Container maxWidth="sm">
+      <PlayerList players={APIData} />
+    </Container>
   );
 }
 
