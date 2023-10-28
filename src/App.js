@@ -5,6 +5,7 @@ import CustomAppBar from './AppBar';
 import PlayerList from './PlayerList';
 import Contact from './Contact';
 import About from './About';
+import Details from './Details';
 
 function App() {
   const [APIData, setAPIData] = useState([]);
@@ -34,6 +35,7 @@ function App() {
             <Route path="/" element={<PlayerList players={APIData} />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
+            <Route path="/details" element={<Details players={APIData} />} />
           </Routes>
         </Container>
       </div>

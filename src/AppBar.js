@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText, useMediaQuery, Button, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function CustomAppBar() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const isMobileScreen = useMediaQuery('(max-width: 600px)');
+  const navigate = useNavigate();
 
   const toggleDrawer = () => {
     setDrawerOpen(!isDrawerOpen);
+  };
+
+  const handleSoccerClick = () => {
+    navigate('/');
   };
 
   const drawerItems = [
@@ -53,8 +58,8 @@ function CustomAppBar() {
             <MenuIcon />
           </IconButton>
         ) : null}
-        <SportsSoccerIcon sx={{ marginRight: '8px' }} />
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <SportsSoccerIcon sx={{ marginRight: '8px', cursor: 'pointer' }} onClick={handleSoccerClick} />
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor: 'pointer' }} onClick={handleSoccerClick}>
           SoccerSphere
         </Typography>
         {renderNavigation()}

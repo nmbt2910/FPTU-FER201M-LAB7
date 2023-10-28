@@ -21,9 +21,9 @@ function Contact() {
       }}
     >
       <Container maxWidth="sm">
-        <Paper elevation={3} sx={{ padding: '20px' }}>
-          <Typography variant="h6" component="h2" sx={{ marginBottom: '20px' }}>
-            Contact Us
+        <Paper elevation={3} sx={{ padding: '20px', textAlign: 'center' }}>
+          <Typography variant="h4" component="h1" sx={{ marginBottom: '20px'}}>
+            Contact SoccerSphere
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12}>
