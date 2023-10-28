@@ -37,9 +37,11 @@ function Details({ players }) {
             <Typography variant="body1">Club: {data.club}</Typography>
             <Typography variant="body1">Nation: {data.nation}</Typography>
             <Typography variant="body1">Cost: {data.cost}</Typography>
-            <Button onClick={() => handlePlayerClick(data)} variant="contained" color="primary">
-              Show Info
-            </Button>
+            <Box sx={{ marginTop: '10px' }}>
+              <Button onClick={() => handlePlayerClick(data)} variant="contained" color="primary">
+                Show Info
+              </Button>
+            </Box>
           </CardContent>
         </Card>
       ))}
