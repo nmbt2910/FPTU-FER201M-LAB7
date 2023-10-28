@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import PlayerList from './PlayerList';
 import { Container } from '@mui/material';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CustomAppBar from './AppBar';
+import PlayerList from './PlayerList';
+import Contact from './Contact';
+import About from './About';
 
 function App() {
   const [APIData, setAPIData] = useState([]);
@@ -22,9 +26,18 @@ function App() {
   }, []);
 
   return (
-    <Container maxWidth="sm">
-      <PlayerList players={APIData} />
-    </Container>
+    <Router>
+      <div>
+        <CustomAppBar />
+        <Container maxWidth="sm">
+          <Routes>
+            <Route path="/" element={<PlayerList players={APIData} />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Container>
+      </div>
+    </Router>
   );
 }
 

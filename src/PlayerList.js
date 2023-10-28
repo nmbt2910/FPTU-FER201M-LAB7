@@ -26,13 +26,14 @@ function PlayerList({ players }) {
   };
 
   return (
-    <Box>
-      <Typography variant="h4" component="h1">Player List</Typography>
+    <Box sx={{ marginTop: '20px' }}>
       {players.map((data) => (
         <Card key={data.id} sx={{ marginBottom: '16px' }}>
           <CardMedia component="img" height="140" image={data.img} alt={data.name} />
           <CardContent>
-            <Typography variant="h6" component="h2">{data.name}</Typography>
+            <Typography variant="h6" component="h2" sx={{ fontWeight: 'bold', fontSize: '20px' }}>
+              {data.name}
+            </Typography>
             <Typography variant="body1">Club: {data.club}</Typography>
             <Typography variant="body1">Nation: {data.nation}</Typography>
             <Typography variant="body1">Cost: {data.cost}</Typography>
@@ -44,29 +45,27 @@ function PlayerList({ players }) {
       ))}
       <AddPlayerForm />
 
-      <Dialog open={selectedPlayer !== null} onClose={handleClose}>
+      <Dialog open={selectedPlayer !== null} onClose={handleClose} maxWidth="md" fullWidth>
         <DialogTitle>{selectedPlayer?.name}</DialogTitle>
         <DialogContent>
-          <Box>
+          <Box sx={{ position: 'relative', paddingTop: '56.25%' }}>
             <iframe
               width="100%"
-              height="auto"
+              height="100%"
               src={selectedPlayer?.clip}
               title="YouTube Video"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
             ></iframe>
           </Box>
-          <DialogContentText>
-            <Typography variant="body1">Club: {selectedPlayer?.club}</Typography>
-            <Typography variant="body1">Nation: {selectedPlayer?.nation}</Typography>
-            <Typography variant="body1">Cost: {selectedPlayer?.cost}</Typography>
-            <Typography variant="body1">Famous: {selectedPlayer?.famous ? 'Yes' : 'No'}</Typography>
+          <DialogContentText sx={{ color: 'black', textAlign: 'center', marginTop: '16px' }}>
+            <Typography variant="body1">{selectedPlayer?.info}</Typography>
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
+        <DialogActions sx={{ justifyContent: 'center' }}>
+          <Button onClick={handleClose} color="secondary" variant="contained">
             Close
           </Button>
         </DialogActions>
