@@ -37,11 +37,11 @@ function CustomAppBar() {
   };
 
   const drawerItems = [
-    { text: 'Dashboard', link: '/'},
-    { text: 'Details', link: '/details'},
-    { text: 'About', link: '/about'},
-    { text: 'Contact', link: '/contact'},
-    
+    { text: 'Dashboard', link: '/' },
+    { text: 'Details', link: '/details' },
+    { text: 'About', link: '/about' },
+    { text: 'Contact', link: '/contact' },
+
   ];
 
   const renderNavigation = () => {
@@ -107,19 +107,19 @@ function CustomAppBar() {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">
-                  <Link to="/" style={{ textDecoration: "none" }}>Dashboard</Link>
+                <Typography textAlign="center" style={{ color: "black" }}>
+                  <Link to="/" style={{ textDecoration: "none", color: "black" }}>Dashboard</Link>
                 </Typography>
               </MenuItem>
 
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">
-                  <Link to="/userprofile" style={{ textDecoration: "none" }}>User Profile</Link>
+                <Typography textAlign="center" style={{ color: "black" }}>
+                  <Link to="/userprofile" style={{ textDecoration: "none", color: "black" }}>User Profile</Link>
                 </Typography>
               </MenuItem>
-              
+
               <MenuItem>
-                <Typography textAlign="center" onClick={handleSignOut}>Logout</Typography>
+                <Typography textAlign="center" style={{ color: "black" }} onClick={handleSignOut}>Logout</Typography>
               </MenuItem>
             </Menu>
           </div>
@@ -136,7 +136,7 @@ function CustomAppBar() {
           sx={{
             position: 'fixed',
             top: 0,
-left: 0,
+            left: 0,
             width: '100%',
             height: '100%',
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
