@@ -11,7 +11,7 @@ function BottomBar() {
         padding: '12px',
       }}
     >
-      SoccerSphere @ 2023
+      SoccerSphere by JavaScript @ 2023
     </Box>
   );
 }

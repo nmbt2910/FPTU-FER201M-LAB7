@@ -17,7 +17,7 @@ function Contact() {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        marginTop: '-100px',
+        marginTop: '-113px',
       }}
     >
       <Container maxWidth="sm">
