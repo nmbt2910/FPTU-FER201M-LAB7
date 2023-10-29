@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText, useMediaQuery, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText, useMediaQuery, Button, Box, Tooltip, Avatar, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from './AuthContext';
 
 function CustomAppBar() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const isMobileScreen = useMediaQuery('(max-width: 600px)');
   const navigate = useNavigate();
+  const { user, logOut } = UserAuth();
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const toggleDrawer = () => {
     setDrawerOpen(!isDrawerOpen);
@@ -15,6 +18,22 @@ function CustomAppBar() {
 
   const handleSoccerClick = () => {
     navigate('/');
+  };
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const drawerItems = [
@@ -63,13 +82,60 @@ function CustomAppBar() {
           SoccerSphere
         </Typography>
         {renderNavigation()}
+        {user?.displayName ? (
+          <div>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt={user.email} src={user.photoURL} />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">
+                  <Link to="/" style={{ textDecoration: "none" }}>Dashboard</Link>
+                </Typography>
+              </MenuItem>
+
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">
+                  <Link to="/userprofile" style={{ textDecoration: "none" }}>User Profile</Link>
+                </Typography>
+              </MenuItem>
+              
+              <MenuItem>
+                <Typography textAlign="center" onClick={handleSignOut}>Logout</Typography>
+              </MenuItem>
+            </Menu>
+          </div>
+        ) : (
+          <Link to="/login" style={{ textDecoration: "none" }}>
+            <Button sx={{ my: 2, color: 'white', display: 'block', fontWeight: 'bold' }}>
+              Sign in
+            </Button>
+          </Link>
+        )}
       </Toolbar>
       {isDrawerOpen && isMobileScreen && (
         <Box
           sx={{
             position: 'fixed',
             top: 0,
-            left: 0,
+left: 0,
             width: '100%',
             height: '100%',
             backgroundColor: 'rgba(0, 0, 0, 0.5)',

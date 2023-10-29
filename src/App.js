@@ -6,6 +6,8 @@ import PlayerList from './PlayerList';
 import Contact from './Contact';
 import About from './About';
 import Details from './Details';
+import Login from './Login';
+import UserProfile from './UserProfile';
 
 function App() {
   const [APIData, setAPIData] = useState([]);
@@ -36,6 +38,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
             <Route path="/details" element={<Details players={APIData} />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/userprofile" element={<UserProfile />} />
           </Routes>
         </Container>
       </div>
