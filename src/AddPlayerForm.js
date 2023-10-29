@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 function AddPlayerForm() {
   const formik = useFormik({
     initialValues: {
-      name: '',
       nation: '',
       club: '',
       cost: 0,
@@ -15,7 +14,6 @@ function AddPlayerForm() {
       top: false,
     },
     validationSchema: Yup.object({
-      name: Yup.string().required('Required.').min(2, 'Must be 2 characters or more'),
       nation: Yup.string().required('Required.').min(2, 'Must be 2 characters or more'),
       club: Yup.string().required('Required.').min(2, 'Must be 2 characters or more'),
       cost: Yup.number().required('Required.').integer().typeError('Please type a number.'),
@@ -43,29 +41,7 @@ function AddPlayerForm() {
     },
   });
 
-  return (
-    <div>
-      <h2>Add Player</h2>
-      <form onSubmit={formik.handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.name}
-          />
-          {formik.touched.name && formik.errors.name && (
-            <div>{formik.errors.name}</div>
-          )}
-        </div>
-        {/* Other form fields */}
-        <button type="submit">Add</button>
-      </form>
-    </div>
-  );
+  return null;
 }
 
 export default AddPlayerForm;

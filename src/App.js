@@ -13,19 +13,20 @@ function App() {
   const [APIData, setAPIData] = useState([]);
 
   useEffect(() => {
-    const baseURL = 'https://6535dff3c620ba9358ecb96d.mockapi.io/dbPlayers';
-
-    fetch(baseURL)
-      .then(response => {
+    const fetchAPIData = async () => {
+      try {
+        const response = await fetch('https://6535dff3c620ba9358ecb96d.mockapi.io/dbPlayers');
         if (!response.ok) {
           throw new Error(`HTTP Status: ${response.status}`);
         }
-        return response.json();
-      })
-      .then(data => {
+        const data = await response.json();
         setAPIData(data);
-      })
-      .catch(error => console.log(error.message));
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchAPIData();
   }, []);
 
   return (

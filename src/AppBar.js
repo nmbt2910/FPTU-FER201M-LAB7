@@ -37,10 +37,11 @@ function CustomAppBar() {
   };
 
   const drawerItems = [
-    { text: 'Dashboard', link: '/', color: '#ff0000' },
-    { text: 'About', link: '/about', color: '#00ff00' },
-    { text: 'Contact', link: '/contact', color: '#0000ff' },
-    { text: 'Details', link: '/details', color: '#ffff00' },
+    { text: 'Dashboard', link: '/'},
+    { text: 'Details', link: '/details'},
+    { text: 'About', link: '/about'},
+    { text: 'Contact', link: '/contact'},
+    
   ];
 
   const renderNavigation = () => {
