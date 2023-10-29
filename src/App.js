@@ -8,6 +8,7 @@ import About from './About';
 import Details from './Details';
 import Login from './Login';
 import UserProfile from './UserProfile';
+import BottomBar from './BottomBar';
 
 function App() {
   const [APIData, setAPIData] = useState([]);
@@ -43,6 +44,7 @@ function App() {
             <Route path="/userprofile" element={<UserProfile />} />
           </Routes>
         </Container>
+        <BottomBar />
       </div>
     </Router>
   );
