@@ -17,7 +17,7 @@ export default function UserProfile() {
 
   const handleSignOut = async () => {
     try {
-      await logOut(); // Replace `logOut` with your actual logout function
+      await logOut();
       showLogoutMessage();
       navigate('/');
     } catch (error) {
@@ -26,7 +26,6 @@ export default function UserProfile() {
   };
 
   const showLogoutMessage = () => {
-    // Display your logout success message here
     console.log('Logout successful');
   };
 
